@@ -1,0 +1,406 @@
+/* CSSコーディングの主な流れ */
+/* 1. 全体の構成・サイズ感の確認 */
+/* 2. 全体のベースとなるCSS設定 */
+/* 3. 全体の大枠レイアウトの調整 */
+/* 4. 各セクション・パーツの調整 */
+/* 5. 各環境での確認・修正 */
+
+@charset "utf-8";
+
+
+/* -----------------------------------------------
+    html, body common
+   ----------------------------------------------- */
+html{
+    font-size: 62.5%;
+}
+body{
+    max-width: 120rem;
+    margin: auto;
+    color: #222222;
+    font-family: Work Sans;
+    font-size: 1.6rem;
+}
+img{
+    max-width: 100%;
+    height: auto;    
+}
+.nav{
+    font-size: 2.1rem;
+}
+.site-title{
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: #ffff;
+}
+.site-subtitle{
+    font-size: 2.4rem;
+    color: #ffff;
+}
+h2{
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 0 0 3rem;
+    text-align: center;
+}
+h3{
+    font-size: 1.8rem;
+    margin: 0 0 6rem;
+    text-align: center;
+}
+p{
+    font-size: 1.6rem;
+    line-height: 3.2rem;
+}
+
+
+/* -----------------------------------------------
+    header, nav
+   ----------------------------------------------- */
+.header-wrapper{
+    display: flex;
+    justify-content: space-between; 
+    height: 12.1rem;
+    align-items: center;
+}
+.nav-list{
+    display: flex;
+}
+.nav-item{
+    margin: 0 5rem 0 0;
+}
+.nav-item>a{
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+/* -----------------------------------------------
+    top image
+   ----------------------------------------------- */
+.top-image{
+    position: relative;
+}
+.titlebox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 土台になる要素の大きさの50%分だけ、乗っかる要素の左上端が移動
+       土台要素の上端から下に50%, 左端から右に50% */
+    transform: translate3d(-50%,-50%,0);
+    /* そのhtml自身の大きさの50%分だけ、左、上、に移動(x,y,z) */
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+.site-title{
+    margin: 0 0 3rem;
+}
+
+
+/* -----------------------------------------------
+    about
+   ----------------------------------------------- */
+.about-wrapper{
+    text-align: center;
+    padding: 6rem 0;
+}
+.about-title{
+    color: #ffd61a;
+}
+    /* 文章は１行ごとにpタグで独立させた。
+       はじめ、marginで調整していたがpタグ共通のline-heightを適用した。 */
+.about1{
+    margin: 0 0 4rem;
+}
+.about2{
+    margin: 0 0 0rem;
+}
+.about3{
+    margin: 0 0 4rem;
+}
+.about4{
+    margin: 0 0 4rem;
+}
+.about5{
+    margin: 0 0 0rem;
+}
+.about6{
+    margin: 0 0 8rem;
+}
+    /* 画像をスライドショーにすることに挑戦！ */
+.about-slide{
+    display: flex;
+    overflow: hidden;
+}
+.about-image{
+    width: 40rem;
+    height: auto;
+}
+
+
+/* -----------------------------------------------
+    course
+   ----------------------------------------------- */
+.course-head{
+    text-align: center;
+    margin-bottom: 6rem;
+}
+.course-title{
+    text-align: left;
+}
+.course-zitti{
+    display: flex;
+}
+.course-zitti-item{
+    width: 48rem;
+    justify-content: center;
+    margin: auto auto auto 5rem;
+}
+.course-zitti-img{
+    width: 60rem;
+}
+.course-zagaku{
+    display: flex;
+}
+.course-zagaku-item{
+    width: 48rem;
+    justify-content: center;
+    margin: auto 5rem auto auto;
+}
+.course-zagaku-img{
+    width: 60rem;
+}
+.course-taste{
+    display: flex;
+}
+.course-taste-item{
+    width: 48rem;
+    justify-content: center;
+    margin: auto auto auto 5rem;
+}
+.course-taste-img{
+    width: 60rem;
+}
+
+/* -----------------------------------------------
+    news
+   ----------------------------------------------- */
+.news-wrapper{
+    padding: 6rem 0;
+}
+.news-title{
+    color: #ffd61a;
+}
+.news-list{
+    display: flex;
+    margin: 0 auto 6rem;
+    justify-content: center;
+}
+.news-contents{
+    width: 30rem;
+    margin: 0 1.5rem;
+}
+.news-contents:hover{
+    opacity: 70%;
+}
+.news-eyecatch{
+    margin: 0 0 3rem;
+}
+.news-date{
+    margin: 0 0 2.4rem;
+}
+.news-link{
+    text-decoration: none;
+    color: #222222;
+}
+.btn{
+    display: block;
+    width: 30rem;
+    height: 6rem;
+    margin: auto;
+    line-height: 6.0rem;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ffd61a;
+    color: #ffff;
+    font-size: 1.8rem;
+    border: none;
+}
+.btn:hover{
+    background    : orange;
+}
+
+
+/* -----------------------------------------------
+    access
+   ----------------------------------------------- */
+.access-wrapper{
+    padding: 6rem 0;
+}
+    /* 表みたいに列×行で表示するために 1行の幅合計（flex-itemのwidthやpadding） が
+    flex-containerの幅に等しくなるように調整。けっこう力技でやった感覚。これでいい？ */
+    /* flex containerが勝手に中央表示になる。これでいいんだが、なぜ？ */
+.access-inner{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80rem;
+    margin: auto;
+    margin-top: 6rem;
+}
+.access-title{
+    width: 15rem;
+    text-align: left;
+    padding: 1.5rem 0 1.5rem 20rem;
+}
+.access-item{
+    width: 42rem;
+    text-align: left;
+    padding: 1.5rem 0 1.5rem 3rem;
+}
+
+
+/* -----------------------------------------------
+    contact
+   ----------------------------------------------- */
+.form-wrapper{
+    text-align: center;
+    margin: auto;
+    margin-top: 6rem;
+    margin-bottom: 14rem;
+}
+.paragraph1{
+    margin: 0 0 3rem;
+}
+.paragraph2{
+    margin: 0 0 7rem;
+}
+.form-inner{
+    display: flex;
+    flex-wrap: wrap;
+    width: 64rem;
+    align-items: center;
+    margin: 0 auto 3rem;
+}
+.form-title{
+    width: 16rem;
+    margin: 0 6.4rem 0 1.6rem;
+    text-align: left;
+}
+.form-item{
+    width: 39.2rem;
+    margin: 0.8rem 0 0.8rem 0.8rem;
+    text-align: left;
+}
+.form-parts{
+    appearance: none;
+    -webkit-appearance:none;
+    -moz-apparance:none;
+    /* optionタグのデフォルトの下矢印は表示残したいのに消えた */
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    border: solid 0.1rem #bfbfbf;
+}
+.form-parts:hover{
+    cursor: pointer;
+}
+    /* セレクタ指定方法 */
+input[type*="checkbox"]{
+    appearance: none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: 0 3.2rem 0 0;
+    background-color:#bfbfbf;
+    border-radius: 20%;
+    vertical-align: -0.2rem;
+}
+
+input[type*="checkbox"]:checked{
+    background-color: #ffd61a;
+    /* チェックマークが表示されない、チェックボックス上でホバー（指化）しない */
+}
+.check-list{
+    display: block;
+    width: max-content;
+    align-items: center;
+    margin: 1.2rem 0;
+    cursor: pointer;
+}
+.btn-submit{
+    appearance: none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    cursor: pointer;
+    /* デフォルトのsubmitボタンはホバーエフェクトがない */
+}
+.submit-done{
+    text-align: center;
+    margin: 15rem;
+}
+
+/* -----------------------------------------------
+    footer
+   ----------------------------------------------- */
+.footer{
+    padding: 3rem 0;
+    background-color: #707070;
+    text-align: center;
+}
+    /* 半角あけると指定セレクタの孫要素までプロパティ適用 */
+.footer .wrapper{
+    position: relative;
+}
+.copyrights{
+    color: #ffff;
+    font-weight: lighter;
+}
+.btn-pagetop{
+    display: block;
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 50%;
+    background-color: #707070;
+    position: absolute;
+    top: -10rem;
+    right: 0;
+}
+.icon-up{
+    color: #ffff;
+    font-size: 2.4rem;
+    padding: 1rem 0;
+}
+
+
+.sns-link{
+    position: absolute;
+    top: -30rem;
+    right: 0;
+}
+.sns{
+    width: 4.4rem;
+    height: 4.4rem;
+}
+.sns-icon{
+    font-size: 4.4rem;
+    padding: 0;
+}
+.t-icon{
+    color: #1DA1F2;
+}
+.y-icon{
+    color: #DA1725;
+}
+.f-icon{
+    color: #1877f2;
+}
+.i-icon{
+    color: #FFDD83;
+}
+
+/* -----------------------------------------------
+    fin fin fin fin fin fin fin fin fin fin fin 
+   ----------------------------------------------- */
